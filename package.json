@@ -1,4 +1,5 @@
 {
+  "description": "Challenge Meercado Libre",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -17,8 +18,17 @@
     "@testing-library/react": "13.2.0",
     "@testing-library/user-event": "14.2.0",
     "@types/react": "18.0.9",
+    "autoprefixer": "^10.4.7",
+    "eslint": "8.19.0",
+    "eslint-config-next": "12.2.0",
     "jest": "28.1.0",
     "jest-environment-jsdom": "28.1.0",
+    "postcss": "^8.4.14",
+    "tailwindcss": "^3.1.6",
     "typescript": "4.6.4"
+  },
+  "author": {
+    "name": "Diego Saldano",
+    "email": "diesaldano@gmail.com"
   }
 }
