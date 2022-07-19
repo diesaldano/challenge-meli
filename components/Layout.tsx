@@ -9,8 +9,8 @@ const Layout = ({ children }: LayoutProps) => {
     return (
         <div className="bg-gray-100">
             <NavBar />
-            <main>
-              {children}
+            <main style={{ padding: '0rem 10rem' }}>
+                {children}
             </main>
         </div>
     )
