@@ -10,9 +10,7 @@ const NavBar: React.FC = () => {
 
   function onSubmithandle (e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    
-    router.push(`/?query=${value}`);
-    // router.push(`/items?search=${value}`);
+    router.push(`/items?search=${value}`);
   }
   
   return (
@@ -22,7 +20,7 @@ const NavBar: React.FC = () => {
           <div className="col-span-1 flex justify-center items-center">
             <a className="flex justify-center items-center" href="/">
               <Image alt="Picture of the author" src={Logo}
-                width={65} height={31} className="flex items-center mt-2"
+                width={50} height={31} className="flex items-center mt-2"
               />
             </a>
           </div>
