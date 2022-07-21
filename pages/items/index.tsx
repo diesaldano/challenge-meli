@@ -1,14 +1,29 @@
 import type { NextPage } from "next";
 import { GetServerSideProps } from "next";
 import api from "../api";
-import Product from "@/components/Product";
+import Products from "@/components/Products";
+import Breadcrum from "@/components/Breadcrum";
+import { Product } from "@/interfaces/types";
 
-const Items: NextPage = ({data}:any) => {
-  return data ? <Product product={data}/> : <div>loading</div>;
+type Props = {
+  query: string;
+}
+
+type PropsPage = {
+  data: Product[];
+}
+
+const ProductsPage = ({data}:PropsPage) => {
+  return data ? 
+    <>
+      <Breadcrum breadcrumb={data}/>
+      <Products product={data}/> 
+    </>
+    : <div>loading</div>;
 };
 
-export const getServerSideProps = async ({query}: any) => {
-  console.log(query.search);
+
+export const getServerSideProps = async ({query}: Props ) => {
   const data = await api.search(`${query.search}`);
 
   return {
@@ -20,4 +35,4 @@ export const getServerSideProps = async ({query}: any) => {
 
 
 
-export default Items;
+export default ProductsPage;

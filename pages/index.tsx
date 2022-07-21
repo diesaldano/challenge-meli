@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import { GetServerSideProps } from "next";
 import api from "./api";
-import Product from "@/components/Product";
+import Product from "@/components/Products";
 import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
@@ -10,14 +10,5 @@ const Home: NextPage = () => {
     </div>
   )};
 
-  export const getServerSideProps = async ({query}: any) => {
-    const data = await api.search(`${query.query}`);
-  
-    return {
-      props: {
-        data
-      },
-    }
-  }
 export default Home;
 

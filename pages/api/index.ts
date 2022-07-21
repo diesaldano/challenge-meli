@@ -1,25 +1,23 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { Product } from '../../interfaces/types'
+import { Product, Filters, PathFromRoot } from '../../interfaces/types'
 
 export default {
-  search: (query: string): any => {
+  search: (query: string): Promise<Product> => {
     return fetch(`https://api.mercadolibre.com/sites/MLA/search?q=${query}`)
       .then( res => res.json())
       .then( data => {
-        return data.results.map( (item: any) => {
+        console.log(data.filters[0].values[0])
+        return data.results.map( (item: Product) => {
           let user = item.seller.id
-          //get user data
-          let userData = fetch(`https://api.mercadolibre.com/users/${user}`)
-            .then( resUser => resUser.json())
-            .then( dataUser => {
-              return dataUser
-            })
+
           return {
             id: item.id,
             author: {
-              name: item.seller.permalink,
+              name: 'Diego',
+              lastname: 'Saldano'
             },
-            categories: data.available_filters[0].values.map((category: any) => category.name),
+            seller: item.seller.permalink,
+            categories: data.filters.find( (filter: Filters) => filter.id === 'category')?.values[0].path_from_root.map( (category: PathFromRoot) => category.name) || [],
             items: [
               {
                 id: item.id,

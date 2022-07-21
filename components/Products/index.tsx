@@ -1,14 +1,19 @@
 import Image from "next/image";
 import FreeShepping from "../../assets/ic_shipping@2x.png"
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import  Link from "next/link";
+import { useState } from "react";
+import { Product, Item } from "@/interfaces/types";
 
-const Product: React.FC = ({ product }: any) => {
+//declare props
+type Props = {
+  product: Product[];
+}
+
+const Products = ({ product }: Props) => {
   const router = useRouter();
-  const [productDetail, setProductDetail] = useState(null);
+  const [productDetail, setProductDetail] = useState<Product | null>(null);
 
-  const handleProductClick = (item: any) => {
+  const handleProductClick = (item: Product) => {
     setProductDetail(item);
     router.push(`/items/${item.id}`);
   }
@@ -18,21 +23,21 @@ const Product: React.FC = ({ product }: any) => {
   }
 
   return (
-    <div className="bg-white mt-10  drop-shadow-md">
-      { product && product.map((item: any) => {
+    <div className="bg-white drop-shadow-md">
+      { product && product.map((item: Product, index: number) => {
           const free_shipping = (item.free_shipping === true) ? 
           <span className="pl-2 pt-1">
             <Image src={FreeShepping} width={20} height={20} />
           </span> : "";
 
           return (
-            <div key={item.id} className="grid grid grid-cols-12 w-100 w-full px-4 pointer" onClick={ ()=> handleProductClick(item)}>
+            <div key={index} className="grid grid grid-cols-12 w-100 w-full px-4 pointer" onClick={ ()=> handleProductClick(item)}>
               <div className="col-span-3 flex justify-center items-center">
                 <a className="flex justify-center items-center" href="/">
                   <img src={item.picture} alt="Picture of the author" width={200} height={200} className="flex items-center mt-2" />
                 </a>
               </div>
-              { item.items.map((item: any) => {
+              { item.items.map((item: Item) => {
                   return (
                     <div key={item.id} className="grid grid-column px-4 py-4 col-span-7 w-full h-28	">
                       <span className="font-sans text-xl font-medium flex justify-start items-center pt-2">
@@ -60,4 +65,4 @@ const Product: React.FC = ({ product }: any) => {
   );
 }
 
-export default Product;
+export default Products;

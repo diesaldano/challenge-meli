@@ -1,6 +1,13 @@
 import { NextPage } from "next";
+import { Product } from "@/interfaces/types";
+import { ProductDetail } from "@/interfaces/details";
 
-const ProductDetail: React.FC = ({ product }: any) => {
+//declare props
+type Props = {
+  product: ProductDetail;
+};
+
+const ProductDetail= ({ product }: Props) => {
   return (
     <div className="w-full w-100 grid grid-cols-12">
       <div className="col-span-8 flex justify-center">
