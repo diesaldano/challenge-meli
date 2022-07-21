@@ -6,7 +6,6 @@ export default {
     return fetch(`https://api.mercadolibre.com/sites/MLA/search?q=${query}`)
       .then( res => res.json())
       .then( data => {
-        console.log(data.filters[0].values[0])
         return data.results.map( (item: Product) => {
           let user = item.seller.id
 
@@ -17,7 +16,8 @@ export default {
               lastname: 'Saldano'
             },
             seller: item.seller.permalink,
-            categories: data.filters.find( (filter: Filters) => filter.id === 'category')?.values[0].path_from_root.map( (category: PathFromRoot) => category.name) || [],
+            categories: data.filters.find( (filter: Filters) => filter.id === 'category')?.values[0].path_from_root.map( (category: PathFromRoot) => category.name) 
+            || (data.available_filters[0].values ? data.available_filters[0].values[0].name : data.available_filters[0].name),
             items: [
               {
                 id: item.id,
