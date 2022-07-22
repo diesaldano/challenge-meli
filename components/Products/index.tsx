@@ -59,7 +59,7 @@ const Products = ({ product }: Props) => {
             </div>
           )
         }) || 
-        <div>loading</div>
+        <div>Products Empy</div>
       }
     </div>
   );

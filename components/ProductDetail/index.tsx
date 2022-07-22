@@ -8,14 +8,14 @@ type Props = {
 
 const ProductDetail= ({ product }: Props) => {
   return (
-    <div className="w-full w-100 grid grid-cols-12">
+    <div className="w-full w-100 grid grid-cols-12 my-8">
       <div className="col-span-8 flex justify-center">
         <Image src={product.picture[0].url} alt="Picture of the author" className="flex items-center mt-2" width={200} height={200}
           quality={75} priority objectFit="cover"/>
       </div>
       <div className="col-span-4 mt-4">
         <div className="grid grid-column pr-8">
-          <span className="font-sans text-xs text-gray-500 font-ligth flex justify-start items-center pt-4">
+          <span className="font-sans text-xs text-gray-500 font-ligth flex justify-start items-center pt-">
             { product.condition ? 'Nuevo' : 'Usado'} - {product.sold_quantity} vendidos
           </span>
           <h1 className="font-sans text-xl	font-medium flex justify-start items-center pt-2 leading-6">{product.item.title}</h1>
