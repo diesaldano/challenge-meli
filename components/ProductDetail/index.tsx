@@ -11,7 +11,7 @@ const ProductDetail= ({ product }: Props) => {
     <div className="w-full w-100 grid grid-cols-12 my-8">
       <div className="col-span-8 flex justify-center">
         <Image src={product.picture[0].url} alt="Picture of the author" className="flex items-center mt-2" width={200} height={200}
-          quality={75} priority objectFit="cover"/>
+          quality={75} priority objectFit="contain"/>
       </div>
       <div className="col-span-4 mt-4">
         <div className="grid grid-column pr-8">
