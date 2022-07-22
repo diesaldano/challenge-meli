@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { Product, Item } from "@/interfaces/types";
 
-//declare props
 type Props = {
   product: Product[];
 }
@@ -31,10 +30,11 @@ const Products = ({ product }: Props) => {
           </span> : "";
 
           return (
-            <div key={index} className="grid grid grid-cols-12 w-100 w-full px-4 pointer" onClick={ ()=> handleProductClick(item)}>
+            <div key={index} className="grid grid grid-cols-12 w-100 w-full px-4 cursor-pointer	" onClick={ ()=> handleProductClick(item)}>
               <div className="col-span-3 flex justify-center items-center">
-                <a className="flex justify-center items-center" href="/">
-                  <img src={item.picture} alt="Picture of the author" width={200} height={200} className="flex items-center mt-2" />
+                <a className="flex justify-center items-center" >
+                  <Image src={item.picture} alt="Picture of the author" width={200} height={200} 
+                    className="flex items-center mt-2" quality={75} priority objectFit="cover" />
                 </a>
               </div>
               { item.items.map((item: Item) => {
