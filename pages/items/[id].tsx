@@ -1,6 +1,5 @@
 import api from "../api";
 import ProductDetailComponent from "@/components/ProductDetail";
-import { GetServerSideProps } from "next";
 import { NextPage } from "next";
 import { ProductDetail } from "@/interfaces/details";
 
@@ -15,7 +14,7 @@ type ServerSideProps = {
 }
 
 
-const ProductDetail = ({ product }: Props)  => {
+const ProductDetail: NextPage<Props> = ({ product }: Props)  => {
   return(
     <div className="w-full bg-white mt-10  drop-shadow-md">
       { product ? <ProductDetailComponent product={product}/> : <div>loading</div> }

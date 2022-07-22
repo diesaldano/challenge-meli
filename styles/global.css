@@ -55,3 +55,31 @@ code {
   font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
     Bitstream Vera Sans Mono, Courier New, monospace;
 }
+
+.padding {
+  padding: 0rem 10rem;  
+}
+
+/* grid of products */
+.grid-products-custom {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+
+}
+
+@media screen and (max-width: 768px) {
+  .padding {
+    padding: 0rem 2rem;
+  }
+  .grid-products-custom {
+    display: grid;
+    flex-direction: column;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .padding {
+    padding: 0rem 4rem;
+  }
+}
+  

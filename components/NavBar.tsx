@@ -15,16 +15,16 @@ const NavBar: React.FC = () => {
   
   return (
     <div className="navbar navbar-light bg-light w-100">
-      <nav className="z-0 relative shadow bg-yellow-300	w-100 wrap" style={{ padding: '0rem 10rem' }}>
+      <nav className="z-0 relative shadow bg-yellow-300	w-100 wrap padding">
         <div className="grid grid-cols-12 w-100 flex items-center h-16">
-          <div className="col-span-1 flex justify-center items-center">
+          <div className="w-full col-span-3 md:col-span-1 flex justify-center items-center">
             <a className="flex justify-center items-center" href="/">
               <Image alt="Picture of the author" src={Logo}
                 width={50} height={31} className="flex items-center mt-2"
               />
             </a>
           </div>
-          <div className="flex justify-start px-2 col-span-11 w-full">
+          <div className="flex justify-start px-2 col-span-9 md:col-span-11 w-full">
             <div className="w-100 w-full">
               <label htmlFor="search" className="sr-only">Search</label>
               <form method="get" onSubmit={onSubmithandle} className="relative z-50">

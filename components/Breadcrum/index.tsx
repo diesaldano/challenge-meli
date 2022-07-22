@@ -5,7 +5,7 @@ type Props = {
   breadcrumb: Product[];
 }
 
-const Breadcrum = ({ breadcrumb }: Props) => {
+const Breadcrum: React.FC<Props> = ({ breadcrumb }: Props) => {
   let categories = breadcrumb.reduce((acc: any, item: Product, index: number) => {
     if (index === 0) {
       return acc.concat(item.categories);
@@ -18,7 +18,7 @@ const Breadcrum = ({ breadcrumb }: Props) => {
       {
         categories.map((item: string, index: number) => {
             return (
-              <span className="text-gray-400 text-sm" key={index}>
+              <span className="text-xs text-gray-400 md:text-sm" key={index}>
                 {item} { index !== categories.length - 1 ? <span className="text-gray-400"> {" > "} </span> : null }
               </span>
             )

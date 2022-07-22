@@ -1,5 +1,4 @@
 import type { NextPage } from "next";
-import { GetServerSideProps } from "next";
 import api from "../api";
 import Products from "@/components/Products";
 import Breadcrum from "@/components/Breadcrum";
@@ -13,7 +12,7 @@ type PropsPage = {
   data: Product[];
 }
 
-const ProductsPage = ({data}:PropsPage) => {
+const ProductsPage: NextPage<PropsPage> = ({data}:PropsPage) => {
   return data ? 
     <>
       <Breadcrum breadcrumb={data}/>

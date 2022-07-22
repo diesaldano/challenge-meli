@@ -8,7 +8,7 @@ type Props = {
   product: Product[];
 }
 
-const Products = ({ product }: Props) => {
+const Products: React.FC<Props> = ({ product }: Props) => {
   const router = useRouter();
   const [productDetail, setProductDetail] = useState<Product | null>(null);
 
@@ -21,8 +21,15 @@ const Products = ({ product }: Props) => {
     return price.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
   }
 
+  const formatTitle = (title: string) => {
+    if (title.length > 40) {
+      return title.substring(0, 40) + "...";
+    }
+    return title.replace(/\-+/g, ' ').toLowerCase();
+  }
+
   return (
-    <div className="bg-white drop-shadow-md">
+    <div className="bg-white drop-shadow-md w-full">
       { product && product.map((item: Product, index: number) => {
           const free_shipping = (item.free_shipping === true) ? 
           <span className="pl-2 pt-1">
@@ -30,7 +37,7 @@ const Products = ({ product }: Props) => {
           </span> : "";
 
           return (
-            <div key={index} className="grid grid grid-cols-12 w-100 w-full px-4 cursor-pointer	" onClick={ ()=> handleProductClick(item)}>
+            <div key={index} className="w-100 w-full px-4 cursor-pointer grid-products-custom" onClick={ ()=> handleProductClick(item)}>
               <div className="col-span-3 flex justify-center items-center">
                 <a className="flex justify-center items-center" >
                   <img src={item.picture} alt="Picture of the author" width={200} height={200} className="flex items-center mt-2" />
@@ -46,7 +53,7 @@ const Products = ({ product }: Props) => {
                         { formatPrice(item.price.amount)} 
                         { free_shipping }
                       </span>
-                      <span className="text-xl font-normal">{item.title}</span>
+                      <span className="font-normal text-sm md:text-xl">{formatTitle(item.title)}</span>
                     </div>
                   )
                 })
